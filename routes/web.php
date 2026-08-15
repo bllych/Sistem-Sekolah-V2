@@ -37,7 +37,7 @@ Route::delete('/{id}/destroy', [StudentController::class, 'destroy'])->name('des
 // Manajemen Data Guru (Action Controller Method)
 Route::name('teachers.')->prefix('teachers')->group(function() {
 Route::get('/', [TeacherController::class, 'index'])->name('index');
-Route::get('/{id}', [TeacherController::class, 'show'])->name('show');
+Route::get('/{id}', [TeacherController::class, 'show'])->name('show')->whereNumber('id');
 // Halaman tambah guru
 Route::get('/create', [TeacherController::class, 'create']  )->name('create');
 // Halaman edit guru
@@ -51,22 +51,27 @@ Route::delete('/{id}/destroy', [TeacherController::class, 'destroy'])->name('des
 });
 
 // Manajemen Data Kelas (Invokable Controller)
-Route::name('schoolclass.')->prefix('schoolclasses')->group(function() {
+Route::name('classes.')->prefix('classes')->group(function () {
+    // Halaman Daftar Class
+    Route::get('/', IndexController::class)->name('index');
 
-Route::get('/', IndexController::class)->name('index');
-// Halaman detail kelas
-Route::get('/{id}', ShowController::class)->name('show');
-// Halaman tambah kelas
-Route::get('/create', CreateController::class)->name('create');
-// Halaman edit kelas
-Route::get('/{id}/edit', EditController::class)->name('edit');
-// Halaman menambah kelas
-Route::post('/store', StoreController::class)->name('store');
-// Halaman update kelas
-Route::put('/{id}/update', UpdateController::class)->name('update');
-// Halaman hapus kelas
-Route::delete('/{id}/destroy', DestroyController::class)->name('destroy');
+    // Halaman Detail Class
+    Route::get('/{id}', ShowController::class)->name('show')->whereNumber('id');
 
+    // Halaman Tambah Class
+    Route::get('/create', CreateController::class)->name('create');
+    
+    // Halaman Edit Class
+    Route::get('/{id}/edit', EditController::class)->name('edit')->whereNumber('id');
+
+    // Logika Tambah Class
+    Route::post('/', StoreController::class)->name('store');
+
+    // Logika Edit Class
+    Route::put('/{id}', UpdateController::class)->name('update')->whereNumber('id');
+
+    // Logika Hapus Class
+    Route::delete('/{id}', DestroyController::class)->name('destroy')->whereNumber('id');
 });
 
 // Manajemen Jurusan Siswa (Resource Controller)

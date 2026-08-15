@@ -8,30 +8,126 @@ class StudentController extends Controller
 {
     public function index()
     {
-        return "Ini adalah halaman daftar siswa";
+        $title = "Sistem Sekolah - Daftar Siswa";
+        $students = [
+            [
+                'id' => 1,
+                'nis' => '1001',
+                'name' => 'Andi',
+                'class' => 'XII TKJ 1',
+                'major' => 'TKJ'
+            ],
+            [
+                'id' => 2,
+                'nis' => '1002',
+                'name' => 'Budi',
+                'class' => 'XII AKL 1',
+                'major' => 'AKL'
+            ],
+            [
+                'id' => 3,
+                'nis' => '1003',
+                'name' => 'Citra',
+                'class' => 'XII RPL 1',
+                'major' => 'RPL'
+            ]
+            
+        ];
+        return view('students.index', [
+            'title' => $title,
+            'students' => $students
+        ]);
     }
-    public function show($id)
-    {
-        return "Ini adalah halaman detail siswa dengan id: " . $id;
-    }
+
+    
     public function create()
     {
-        return "Ini adalah halaman tambah siswa";          
+        $title = "Sistem Sekolah - Tambah Siswa";
+        return view('students.create', ['title' => $title]);
     }
-    public function edit($id)
-    {
-        return "Ini adalah halaman edit siswa dengan id: " . $id;
-    }
+
     public function store(Request $request)
     {
-        return "Proses menambah siswa";
+        return "Melakukan proses tambah data siswa";
     }
+
+    public function show($id)
+    {
+       $title = "Sistem Sekolah - Detail Siswa";
+    $students = [
+            [
+                'id' => 1,
+                'nis' => '1001',
+                'name' => 'Andi',
+                'class' => 'XII TKJ 1',
+                'major' => 'TKJ'
+            ],
+            [
+                'id' => 2,
+                'nis' => '1002',
+                'name' => 'Budi',
+                'class' => 'XII AKL 1',
+                'major' => 'AKL'
+            ],
+            [
+                'id' => 3,
+                'nis' => '1003',
+                'name' => 'Citra',
+                'class' => 'XII RPL 1',
+                'major' => 'RPL'
+            ]
+        
+        ];
+
+        $students = collect($students)->firstWhere('id', $id);
+        return view('students.show', [
+            'title' => $title,
+            'students' => $students
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $title = "Sistem Sekolah - Edit Siswa";
+        $students = [
+            [
+                'id' => 1,
+                'nis' => '1001',
+                'name' => 'Andi',
+                'class' => 'XII TKJ 1',
+                'major' => 'TKJ'
+            ],
+            [
+                'id' => 2,
+                'nis' => '1002',
+                'name' => 'Budi',
+                'class' => 'XII AKL 1',
+                'major' => 'AKL'
+            ],
+            [
+                'id' => 3,
+                'nis' => '1003',
+                'name' => 'Citra',
+                'class' => 'XII RPL 1',
+                'major' => 'RPL'
+            ]
+        
+        ];
+
+        $students = collect($students)->firstWhere('id', $id);
+        return view('students.edit', [
+            'title' => $title,
+            'students' => $students
+        ]);
+    }
+
     public function update(Request $request, $id)
     {
-        return "Proses update siswa dengan id: " . $id;
+        return "Melakukan perubahan data siswa";
     }
+
     public function destroy($id)
     {
-        return "Proses hapus siswa dengan id: " . $id;
+        return "Menghapus data siswa";
     }
 }
