@@ -3,10 +3,7 @@
 @section('title', $title)
 
 @section('content')
-
-        <x-alert type="WARNING">
-            Terdapat kesalahan pada input data. Silakan periksa kembali dan coba lagi.
-        </x-alert>>       
+  
 
         <div class="mb-8 flex items-end justify-between border-b border-[#E5E3DB] pb-5">
             <div>

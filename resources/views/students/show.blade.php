@@ -4,9 +4,6 @@
 
 @section('content')
 
-        <x-alert type="WARNING">
-            Terdapat kesalahan pada input data. Silakan periksa kembali dan coba lagi.
-        </x-alert>>   
 
         <a href="#" class="text-xs uppercase tracking-[0.15em] text-slate-400 hover:text-[#A16207]">&larr; Buku
             Induk</a>
