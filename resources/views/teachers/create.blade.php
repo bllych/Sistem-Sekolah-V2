@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $title)
+
 @section('content')
 
     <div class="mb-8 border-b border-[#E5E3DB] pb-5">

@@ -33,7 +33,7 @@
                 <dd class="font-medium text-[#16213A]">{{ $teacher['subject'] }}</dd>
             </div>
             <div class="flex justify-between px-8 py-4">
-                <dt class="uppercase text-xs text-slate-400">Nomor Telepon</dt>
+                <dt class="uppercase text-xs text-slate-400">No. Telepon</dt>
                 <dd class="font-medium text-[#16213A]">{{ $teacher['phone_number'] }}</dd>
             </div>
             <div class="flex justify-between px-8 py-4">

@@ -15,9 +15,9 @@
 
         <form action="" method="POST" class="space-y-6 border border-[#E5E3DB] bg-white p-8">
             <div>
-                <label for="nis"
+                <label for="nip"
                     class="mb-1.5 block text-xs font-semibold uppercase widest-[0.1em] text-[#16213A]">NIP</label>
-                <input type="text" id="nis" name="nis" value="{{ $teacher['nip'] }}"
+                <input type="text" id="nip" name="nip" value="{{ $teacher['nip'] }}"
                     class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
             </div>
 
@@ -43,12 +43,8 @@
             <div>
                 <label for="subject"
                     class="mb-1.5 block text-xs font-semibold uppercase widest-[0.1em] text-[#16213A]">Mata Pelajaran</label>
-                <select id="subject" name="subject"
-                    class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
-                    <option value="" {{ $teacher['subject'] === 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
-                    <option value="" {{ $teacher['subject'] === 'Jaringan Komputer' ? 'selected' : '' }}>Jaringan Komputer</option>
-                    <option value="" {{ $teacher['subject'] === 'Matematika' ? 'selected' : '' }}>Matematika</option>
-                </select>
+                <input type="text"
+                    id="subject" name="subject" value="{{$teacher['subject']}}"class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
             </div>
 
             <div>
