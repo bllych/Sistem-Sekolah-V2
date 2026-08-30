@@ -23,6 +23,7 @@
                     <th class="px-5 py-3.5 font-semibold">Kode Jurusan</th>
                     <th class="px-5 py-3.5 font-semibold">Nama Jurusan</th>
                     <th class="px-5 py-3.5 font-semibold">Deskripsi</th>
+                    <th class="px-5 py-3.5 text-right font-semibold">Tindakan</th>
                 </tr>
             </thead>
             <tbody>

@@ -39,8 +39,8 @@
             <select id="major_id" name="major_id"
                 class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
                 @foreach ($majors as $major)
-                    <option value="{{ $major['id'] }}" {{ $major['id'] == old('major_id') ? 'selected' : '' }}>
-                        {{ $major['code'] }}
+                    <option value="{{ $major['id'] }}"
+                        {{ $major['name'] === $class['major'] ? 'selected' : '' }}>{{ $major['name'] }}
                     </option>
                 @endforeach
             </select>
@@ -51,9 +51,9 @@
                 class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Wali Kelas</label>
             <select id="teacher_id" name="teacher_id"
                 class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
-                @foreach ($teachers as $id => $teacher)
-                    <option value="{{ $teacher['id'] }}" {{ $teacher['id'] == old('teacher_id') ? 'selected' : '' }}>
-                        {{ $teacher['name'] }}
+                @foreach ($teachers as $teacher)
+                    <option value="{{ $teacher['id'] }}"
+                        {{ $teacher['name'] === $class['homeroom_teacher'] ? 'selected' : '' }}>{{ $teacher['name'] }}
                     </option>
                 @endforeach
             </select>

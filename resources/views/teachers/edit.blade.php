@@ -6,7 +6,7 @@
 
 
     <div class="mb-8 border-b border-[#E5E3DB] pb-5">
-        <a href="" class="text-xs uppercase tracking-[0.15em] text-slate-400 hover:text-[#A16207]">&larr; Buku
+        <a href="{{ route('teachers.index') }}" class="text-xs uppercase tracking-[0.15em] text-slate-400 hover:text-[#A16207]">&larr; Buku
             Induk</a>
         <h1 class="font-display mt-2 text-3xl font-semibold text-[#16213A]">Ubah Data Guru</h1>
         <p class="mt-1 text-sm text-slate-500">Memperbarui catatan atas nama <span
@@ -32,8 +32,8 @@
                 Kelamin</label>
             <select id="gender" name="gender"
                 class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
-                <option value="L" {{ $teacher['gender'] === 'L' ? 'selected' : '' }}>Laki-laki</option>
-                <option value="P" {{ $teacher['gender'] === 'P' ? 'selected' : '' }}>Perempuan</option>
+                <option value="Laki-laki" {{ $teacher['gender'] === 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                <option value="Perempuan" {{ $teacher['gender'] === 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
             </select>
         </div>
 
@@ -63,7 +63,7 @@
 
         <div class="flex justify-end gap-4 border-t border-[#EFEDE6] pt-6">
 
-            <a href="" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">Batal</a>
+            <a href="{{ route('teachers.index')  }}" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">Batal</a>
 
             <button type="submit"
                 class="bg-[#16213A] px-6 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">
