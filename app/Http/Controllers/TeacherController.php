@@ -44,7 +44,7 @@ class TeacherController extends Controller
                 'id' => 1,
                 'nip' => '198501012024',
                 'name' => 'Budi Santoso',
-                'gender' => 'Laki-Laki',
+                'gender' => 'Laki-laki',
                 'subject' => 'Akuntansi Dasar',
                 'phone_number' => '081234560001',
                 'status' => 'Aktif',
