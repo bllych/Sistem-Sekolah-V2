@@ -29,7 +29,7 @@ Route::name('students.')->prefix('students')->group(function() {
     // Halaman edit siswa
     Route::get('/{student}/edit', [StudentController::class, 'edit'])->name('edit');
     // Halaman update siswa
-    Route::put('/{student}/update', [StudentController::class, 'update'])->name('update');
+    Route::put('/{student}', [StudentController::class, 'update'])->name('update');
     // Halaman hapus siswa
     Route::delete('/{student}/destroy', [StudentController::class, 'destroy'])->name('destroy');
 });
