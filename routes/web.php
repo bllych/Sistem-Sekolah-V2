@@ -18,20 +18,20 @@ Route::get('/', function () {
  
 // Manajemen Data Siswa (Action Controller Method)
 Route::name('students.')->prefix('students')->group(function() {
-// Halaman daftar siswa
-Route::get('/', [StudentController::class, 'index'])->name('index');
-// Halaman tambah siswa
-Route::get('/create', [StudentController::class, 'create'])->name('create');
-// Halaman detail siswa
-Route::get('/{id}', [StudentController::class, 'show'])->name('show');
-// Halaman edit siswa
-Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
-// Halaman menambah siswa
-Route::post('/store', [StudentController::class, 'store'])->name('store');
-// Halaman update siswa
-Route::put('/{id}/update', [StudentController::class, 'update'])->name('update');
-// Halaman hapus siswa
-Route::delete('/{id}/destroy', [StudentController::class, 'destroy'])->name('destroy');
+    // Halaman daftar siswa
+    Route::get('/', [StudentController::class, 'index'])->name('index');
+    // Halaman tambah siswa
+    Route::get('/create', [StudentController::class, 'create'])->name('create');
+    // Halaman menambah siswa
+    Route::post('/', [StudentController::class, 'store'])->name('store');
+    // Halaman detail siswa
+    Route::get('/{student}', [StudentController::class, 'show'])->name('show');
+    // Halaman edit siswa
+    Route::get('/{student}/edit', [StudentController::class, 'edit'])->name('edit');
+    // Halaman update siswa
+    Route::put('/{student}/update', [StudentController::class, 'update'])->name('update');
+    // Halaman hapus siswa
+    Route::delete('/{student}/destroy', [StudentController::class, 'destroy'])->name('destroy');
 });
 
 // Manajemen Data Guru (Action Controller Method)

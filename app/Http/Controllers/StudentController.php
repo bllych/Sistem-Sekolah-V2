@@ -10,30 +10,11 @@ class StudentController extends Controller
     public function index()
     {
         $title = "Sistem Sekolah - Daftar Siswa";
-        $students = [
-            [
-                'id' => 1,
-                'nis' => '1001',
-                'name' => 'Andi',
-                'class' => 'XII TKJ 1',
-                'major' => 'TKJ'
-            ],
-            [
-                'id' => 2,
-                'nis' => '1002',
-                'name' => 'Budi',
-                'class' => 'XII AKL 1',
-                'major' => 'AKL'
-            ],
-            [
-                'id' => 3,
-                'nis' => '1003',
-                'name' => 'Citra',
-                'class' => 'XII RPL 1',
-                'major' => 'RPL'
-            ]
-            
-        ];
+
+        $students = Student::select(['id', 'nis', 'name', 'class', 'major'])
+            ->get();
+
+
         return view('students.index', [
             'title' => $title,
             'students' => $students
@@ -50,7 +31,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         // Validasi
-        $request->validate([
+        $validatedRequest = $request->validate([
             'nis' => ['required', 'string', 'size:4', 'unique:students,nis'],
             'name' => ['required', 'string'],
             'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'],
@@ -59,95 +40,57 @@ class StudentController extends Controller
         ]);
 
         // Tambahkan Data ke Database
-        $student = new Student();
-        $student->nis = $request->nis; 
-        $student->name = $request->name; 
-        $student->gender = $request->gender; 
-        $student->major = $request->major; 
-        $student->class = $request->class; 
-        $student->save();
+        Student::create($validatedRequest);
 
-        // Handle
+        // Handle If Success
         return redirect()->route('students.index')->with('success', 'Data siswa berhasil ditambahkan.');
     }
 
-    public function show($id)
+    public function show(Student $student)
     {
-       $title = "Sistem Sekolah - Detail Siswa";
-    $students = [
-            [
-                'id' => 1,
-                'nis' => '1001',
-                'name' => 'Andi',
-                'class' => 'XII TKJ 1',
-                'major' => 'TKJ'
-            ],
-            [
-                'id' => 2,
-                'nis' => '1002',
-                'name' => 'Budi',
-                'class' => 'XII AKL 1',
-                'major' => 'AKL'
-            ],
-            [
-                'id' => 3,
-                'nis' => '1003',
-                'name' => 'Citra',
-                'class' => 'XII RPL 1',
-                'major' => 'RPL'
-            ]
+        $title = "Sistem Sekolah - Detail Siswa";
         
-        ];
 
-        $students = collect($students)->firstWhere('id', $id);
         return view('students.show', [
             'title' => $title,
-            'students' => $students
+            'student' => $student
         ]);
     }
 
-    public function edit($id)
+    public function edit(Student $student)
     {
         $title = "Sistem Sekolah - Edit Siswa";
-        $students = [
-            [
-                'id' => 1,
-                'nis' => '1001',
-                'name' => 'Andi',
-                'class' => 'XII TKJ 1',
-                'major' => 'TKJ'
-            ],
-            [
-                'id' => 2,
-                'nis' => '1002',
-                'name' => 'Budi',
-                'class' => 'XII AKL 1',
-                'major' => 'AKL'
-            ],
-            [
-                'id' => 3,
-                'nis' => '1003',
-                'name' => 'Citra',
-                'class' => 'XII RPL 1',
-                'major' => 'RPL'
-            ]
-        
-        ];
 
-        $students = collect($students)->firstWhere('id', $id);
         return view('students.edit', [
             'title' => $title,
-            'students' => $students
+            'student' => $student
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Student $student, Request $request)
     {
-        return "Melakukan perubahan data siswa";
+        // Validasi
+        $validatedRequest = $request->validate([
+            'nis' => ['required', 'string', 'size:4', 'unique:students,nis,' . $student->id],
+            'name' => ['required', 'string'],
+            'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'],
+            'major' => ['required', 'string', 'in:AKL,TKJ,BID'],
+            'class' => ['required', 'string']
+        ]);
+
+        // Update Data ke Database
+        $student->update($validatedRequest);
+
+        // Handle If Success
+        return redirect()->route('students.index')->with('success', 'Data siswa berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        return "Menghapus data siswa";
+        // Delete Data from Database
+        $student->delete();
+
+        // Handle If Success
+        return redirect()->route('students.index')->with('success', 'Data siswa berhasil dihapus');
     }
 }
